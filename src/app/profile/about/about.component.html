@@ -1,0 +1,32 @@
+<div class="card hovercard" style="text-align: left">
+  <div class="cardheader">
+  </div>
+  <div class="avatar">
+    <img alt="" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg">
+  </div>
+  <div class="info">
+    <div class="card-heading">
+      <h3 align="left">
+        {{ userName }}
+      </h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <ul class="list-group">
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ this.aboutService.aboutData.about }} </p>
+        </li>
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ this.aboutService.aboutData.designation }} </p>        </li>
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ this.aboutService.aboutData.address }} </p>
+        </li>
+      </ul>
+    </div>
+    <br>
+  </div>
+  <div class="modal-footer">
+    <button (click)="open()" class="btn btn-sm btn-primary">Edit</button>
+  </div>
+</div>

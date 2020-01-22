@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title">Education Details</h4>
+  <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="EducationForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="form-group">
+      <input class="form-control" formControlName="organisation" placeholder="Organization " type="textarea"/>
+    </div>
+    <div class="form-group">
+      <label>Start Date</label>
+      <input class="form-control" formControlName="startDate" placeholder="Start Date" type="date"/>
+    </div>
+    <div class="form-group">
+      <label>End Date</label>
+      <input class="form-control" formControlName="endDate" placeholder="Last Date" type="date"/>
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="degree" placeholder="Degree " type="textarea"/>
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="fieldOfStudy" placeholder="Field of Study" type="textarea"/>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group">
+      <input class="form-control btn btn-outline-primary" text="Submit" type="Submit" />
+    </div>
+    <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Close</button>
+  </div>
+</form>

@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title">Tell Us About Yourself</h4>
+  <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="close" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form [formGroup]="AboutForm" (ngSubmit)="onSubmit()">
+<div class="modal-body">
+      <div class="form-group">
+      <input class="form-control" formControlName="about" placeholder="Describe About Yourself " type="textarea"/>
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="designation" placeholder="Designation" type="textarea"/>
+    </div>
+    <div class="form-group">
+      <input class="form-control" formControlName="address" placeholder="Address " type="textarea"/>
+    </div>
+</div>
+<div class="modal-footer">
+  <div class="form-group">
+    <input class="form-control btn btn-outline-primary" text="Submit" type="Submit" />
+  </div>
+  <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Close</button>
+</div>
+</form>

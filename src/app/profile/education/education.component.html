@@ -1,0 +1,33 @@
+<div class="card hovercard">
+  <div class="info">
+    <div class="title">
+      <h3 align="left">
+        Education
+      </h3>
+    </div>
+    <div class="card-body" *ngFor="let key of this.eduService.response">
+      <ul class="list-group" style="text-align: left">
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ key.organisation }}</p>
+        </li>
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ key.degree }}</p>
+        </li>
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ key.startDate.slice(0,10) }} To {{ key.endDate.slice(0,10) }}</p>
+        </li>
+        <li class="list-group">
+          <p class="card-text" style="color: #737373; font-size: medium;"> {{ key.fieldOfStudy }}</p>
+        </li>
+        <div class="modal-footer" align="right">
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteEdu(key)" style="margin-right: 20px">Delete</button>
+          <button class="btn btn-sm btn-outline-primary" (click)="EduUpdate(key)">Edit</button>
+        </div>
+      </ul>
+    </div>
+    <hr>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-primary " (click)="open()">Add</button>
+    </div>
+  </div>
+</div>
