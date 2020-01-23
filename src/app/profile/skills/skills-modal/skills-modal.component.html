@@ -4,15 +4,18 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="skillsForm">
   <div class="modal-body">
     <div class="form-group">
-      <input class="form-control" formControlName="skillName"  placeholder="Add Skill" type="textarea"/>
+      <input class="form-control" formControlName="skillName" placeholder="Add Skill" type="textarea"/>
     </div>
+    <span *ngIf="!skillsForm.get('skillName').valid && skillsForm.get('skillName').touched">
+      <p class="alert-warning">Skill is required..!</p>
+    </span>
   </div>
   <div class="modal-footer">
     <div class="form-group">
-      <input class="form-control btn btn-outline-primary" text="Submit" type="Submit" />
+      <input class="form-control btn btn-outline-primary" text="Submit" type="Submit"/>
     </div>
     <button (click)="activeModal.close('Close click')" class="btn btn-outline-dark" type="button">Close</button>
   </div>

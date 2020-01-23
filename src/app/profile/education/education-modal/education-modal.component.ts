@@ -42,7 +42,7 @@ export class EducationModalComponent implements OnInit {
     }
   }
   onSubmit() {
-    this.EducationForm.controls.userId.setValue(sessionStorage.getItem('userId'));
+    this.EducationForm.controls.userId.setValue(localStorage.getItem('userId'));
     console.log(this.EducationForm.value);
     this.eduService.submitForm(this.EducationForm).subscribe(
       responseData => {

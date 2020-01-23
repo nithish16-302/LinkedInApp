@@ -16,7 +16,7 @@ export class EducationService {
     return this.http.put(this.url.url + 'education/update', eduForm.value);
   }
   getEdu(): Observable<Education[]> {
-    return this.http.get<Education[]>( this.url.url + 'education/get/' + sessionStorage.getItem('userId'));
+    return this.http.get<Education[]>( this.url.url + 'education/get/' + localStorage.getItem('userId'));
   }
   deleteEducation(id: string){
     return this.http.delete(this.url.url + 'education/delete/' + id);

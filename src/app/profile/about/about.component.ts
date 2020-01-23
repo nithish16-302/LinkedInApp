@@ -15,7 +15,7 @@ export class AboutComponent implements OnInit {
   constructor( private loginService: LoginService, private modalService: NgbModal, private aboutService: AboutService) { }
 
   ngOnInit() {
-    this.userName = sessionStorage.getItem('name');
+    this.userName = localStorage.getItem('name');
     this.aboutService.getProfile().subscribe( response => {
           console.log(response);
           console.log('response received');

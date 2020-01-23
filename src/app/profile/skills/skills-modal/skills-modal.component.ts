@@ -21,7 +21,7 @@ export class SkillsModalComponent implements OnInit {
 
   }
   onSubmit(){
-      this.skillsForm.controls.userId.setValue(sessionStorage.getItem('userId'));
+      this.skillsForm.controls.userId.setValue(localStorage.getItem('userId'));
       this.skillsServ.addSkill(this.skillsForm).subscribe(
         responseData => {
           console.log(responseData);

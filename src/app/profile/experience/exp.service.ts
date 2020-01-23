@@ -15,7 +15,7 @@ export class ExpService {
     return this.http.put(this.url.url + 'experience/update', expForm.value);
   }
   getExp(): Observable<Experience[]> {
-    return this.http.get<Experience[]>(this.url.url + 'experience/get/' + sessionStorage.getItem('userId'));
+    return this.http.get<Experience[]>(this.url.url + 'experience/get/' + localStorage.getItem('userId'));
   }
   deleteExp(id: string){
     return  this.http.delete(this.url.url + 'experience/delete/'+ id);

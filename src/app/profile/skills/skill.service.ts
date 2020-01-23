@@ -16,7 +16,7 @@ export class SkillService {
     return this.http.put(this.url.url + 'skills/update', skillsForm.value);
   }
   getSkillsArray(): Observable<Skills[]>{
-    return this.http.get<Skills[]>(this.url.url + 'skills/get/' + sessionStorage.getItem('userId'));
+    return this.http.get<Skills[]>(this.url.url + 'skills/get/' + localStorage.getItem('userId'));
   }
   deleteSkill(id: string){
     return this.http.delete(this.url.url + 'skills/delete/' + id);

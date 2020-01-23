@@ -21,6 +21,6 @@ export class AboutService {
     return this.http.put<About>(this.url.url + 'profile/update', abtForm.value);
   }
   getProfile(): Observable<About>{
-    return this.http.get<About>(this.url.url + 'profile/get/' + sessionStorage.getItem('userId'));
+    return this.http.get<About>(this.url.url + 'profile/get/' + localStorage.getItem('userId'));
   }
 }

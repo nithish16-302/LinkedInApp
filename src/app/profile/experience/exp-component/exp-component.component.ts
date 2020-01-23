@@ -45,7 +45,7 @@ export class ExpComponentComponent implements OnInit {
     }
   }
   onSubmit() {
-      this.ExpFrom.controls.userId.setValue(sessionStorage.getItem('userId'));
+      this.ExpFrom.controls.userId.setValue(localStorage.getItem('userId'));
       console.log(this.ExpFrom.value);
       this.expService.submitForm(this.ExpFrom).subscribe(
         responseData => {

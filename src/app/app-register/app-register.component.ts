@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UrlconfService} from '../urlconf.service';
 import {Router, RouterModule} from '@angular/router';
 import {RegisterService} from './register.service';
@@ -16,17 +16,18 @@ export class AppRegisterComponent implements OnInit {
   constructor(private http: HttpClient,
               private  urlConf: UrlconfService,
               private  route: Router,
-              private registerService: RegisterService) {
+              private registerService: RegisterService,
+              private fb: FormBuilder) {
     this.isRegistered = false;
   }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      'firstName': new FormControl(null, [Validators.required]),
-      'lastName': new FormControl(null, [Validators.required]),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required]),
-      'phoneNo': new FormControl(null, [Validators.required])
+    this.registerForm = this.fb.group({
+      'firstName': [null, Validators.required],
+      'lastName': [null, Validators.required],
+      'email': [null, [Validators.required, Validators.email]],
+      'password': [null, Validators.required],
+      'phoneNo': [null, Validators.required]
     });
   }
 

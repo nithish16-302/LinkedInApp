@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {FormControl, FormGroup, FormsModule, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormsModule, NgForm, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {UrlconfService} from '../urlconf.service';
 import {LoginService} from './login.service';
@@ -23,13 +23,21 @@ export class LoginComponent implements OnInit {
               private urlConf: UrlconfService,
               private route: Router,
               private loginService: LoginService,
-              private regServ: RegisterService) {
+              private regServ: RegisterService,
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.loginForm = new FormGroup({
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, [Validators.required])
+      if(localStorage.getItem('userId') === null){
+        this.createLoginForm();
+      }else{
+        this.route.navigate(['/profile']).then();
+      }
+  }
+  createLoginForm(){
+    this.loginForm = this.fb.group({
+      'email': [null, [Validators.required, Validators.email]],
+      'password': [null, Validators.required]
     });
   }
   onSubmit() {
