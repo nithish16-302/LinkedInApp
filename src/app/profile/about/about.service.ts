@@ -9,7 +9,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AboutService {
-  aboutData: About;
+  aboutData: About = new class implements About {
+    about: "";
+    address: "";
+    designation: "";
+    userId: "";
+  };
   constructor(private url: UrlconfService, private http: HttpClient) {  }
 
   submitForm(abtForm: FormGroup): Observable<About> {

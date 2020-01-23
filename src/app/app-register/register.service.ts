@@ -7,15 +7,18 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class RegisterService {
+  isRegistered:boolean;
+  constructor(private http: HttpClient, private  urlConf: UrlconfService, private  route: Router) {
+    this.isRegistered = false;
+  }
 
-  constructor(private http: HttpClient, private  urlConf: UrlconfService, private  route: Router) { }
-
-  registerUser(postData: {first_name: string, last_name: string, email: string, password: string, phoneno: string}) {
+  registerUser(postData: {firstName: string, lastName: string, email: string, password: string, phoneNo: string}) {
     this.http.post( this.urlConf.url + 'register', postData).subscribe(
       responseData => {
         console.log(responseData);
         // console.log('success');
-        alert('Registered Successfully');
+        // alert('Registered Successfully');
+        this.isRegistered = true;
         this.route.navigate(['/login']).then();
       },
       error => {

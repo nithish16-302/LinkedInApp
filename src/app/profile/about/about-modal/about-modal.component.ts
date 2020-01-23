@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AboutService} from '../about.service';
-import {UrlconfService} from '../../../urlconf.service';
-import {Observable} from "rxjs";
-import {About} from "../about";
-import {AboutComponent} from "../about.component";
+
 
 @Component({
   selector: 'app-about-modal',
@@ -17,9 +14,7 @@ export class AboutModalComponent implements OnInit {
 
   constructor(public activeModal: NgbActiveModal,
               private abtService: AboutService,
-              private fb: FormBuilder,
-              private url: UrlconfService) { }
-
+              private fb: FormBuilder){}
   ngOnInit() {
     this.AboutForm = this.fb.group({
       'about': [null, Validators.required],
@@ -29,8 +24,8 @@ export class AboutModalComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(sessionStorage.getItem('userId'));
-    this.AboutForm.controls.userId.setValue(sessionStorage.getItem('userId'));
+    // console.log(sessionStorage.getItem('userId'));
+    this.AboutForm.controls.userId.setValue(localStorage.getItem('userId'));
     console.log(this.AboutForm.value);
     this.abtService.submitForm(this.AboutForm).subscribe(
       responseData => {
@@ -38,7 +33,9 @@ export class AboutModalComponent implements OnInit {
         this.abtService.aboutData.address = responseData['address'];
         this.abtService.aboutData.designation = responseData['designation'];
         this.abtService.aboutData.userId = responseData['userId'];
-        // console.log(this.abtService.aboutData);
+      },
+      error => {
+        console.log('ERROR');
       }
     );
     this.activeModal.close();

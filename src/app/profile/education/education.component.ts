@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AboutModalComponent} from "../about/about-modal/about-modal.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EducationModalComponent} from "./education-modal/education-modal.component";
 import {EducationService} from "./education.service";

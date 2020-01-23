@@ -1,9 +1,10 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {Router, RouterModule} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {FormControl, FormGroup, FormsModule, NgForm, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {UrlconfService} from '../urlconf.service';
 import {LoginService} from './login.service';
+import {RegisterService} from "../app-register/register.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import {LoginService} from './login.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   serverErrorMessages: string;
-  loading: boolean;
+
   /*formErrors = {
     'email',
     'password':
@@ -21,8 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient,
               private urlConf: UrlconfService,
               private route: Router,
-              private loginService: LoginService) {
-    this.loading = false;
+              private loginService: LoginService,
+              private regServ: RegisterService) {
   }
 
   ngOnInit() {
@@ -32,7 +33,6 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-      this.loading = true;
       this.loginService.login(this.loginForm.value);
   }
 

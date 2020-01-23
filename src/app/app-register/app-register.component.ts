@@ -12,11 +12,12 @@ import {RegisterService} from './register.service';
 })
 export class AppRegisterComponent implements OnInit {
   registerForm: FormGroup;
-
+  isRegistered: boolean;
   constructor(private http: HttpClient,
               private  urlConf: UrlconfService,
               private  route: Router,
               private registerService: RegisterService) {
+    this.isRegistered = false;
   }
 
   ngOnInit() {
@@ -32,5 +33,6 @@ export class AppRegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.registerForm.value);
     this.registerService.registerUser(this.registerForm.value);
+
   }
 }
